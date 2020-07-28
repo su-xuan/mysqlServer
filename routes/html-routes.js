@@ -4,6 +4,7 @@ const cors = require("cors");
 const corsOptions = {
   methods: ["POST"],
   allowedHeaders: ["Content-Type", "application/json"],
+  origin: process.env.CORS_ALLOW,
 };
 
 module.exports = function (app, connection, transporter) {
