@@ -2,7 +2,7 @@ const mysql = require("mysql");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const corsOptions = {
-  methods: ["POST"],
+  methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type", "application/json"],
   origin: process.env.CORS_ALLOW,
 };
@@ -136,6 +136,9 @@ module.exports = function (app, connection, transporter) {
       }
     );
   });
+
+  app.options("/getName", cors());
+
   app.get("/getName", cors(), function (req, res) {
     const name = req.query.name;
 
