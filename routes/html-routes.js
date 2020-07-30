@@ -154,6 +154,8 @@ module.exports = function (app, connection, transporter) {
     );
   });
 
+  app.options("/getRandomName", cors());
+
   app.get("/getRandomName", cors(), function (req, res) {
     console.log("connected, gender:", req.query.gender);
     const gender = req.query.gender;
@@ -174,6 +176,7 @@ module.exports = function (app, connection, transporter) {
   app.use(bodyParser.json());
 
   app.options("/sendMail", cors(corsOptions));
+
   app.post("/sendMail", cors(corsOptions), function (req, res) {
     console.log("Got body:", req.body);
     const data = req.body;
