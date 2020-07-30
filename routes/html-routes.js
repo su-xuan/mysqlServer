@@ -186,7 +186,6 @@ module.exports = function (app, connection, transporter) {
       subject: "New Request",
       text: "description: " + data.description + " email: " + data.email,
     };
-    res.sendStatus(200);
 
     transporter.sendMail(mail, (error, info) => {
       error ? res.send(error) : res.send(info.response);
